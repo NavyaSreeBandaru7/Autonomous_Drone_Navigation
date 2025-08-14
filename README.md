@@ -1,4 +1,3 @@
-# Autonomous_Drone_Navigation
 # Autonomous Drone Navigation System
 
 A comprehensive computer vision-based autonomous drone navigation system with advanced obstacle avoidance, natural language processing, and intelligent path planning.
