@@ -1,0 +1,229 @@
+{
+  "connection_settings": {
+    "connection_string": "udp:127.0.0.1:14550",
+    "simulation_mode": true,
+    "timeout": 5.0
+  },
+  
+  "flight_parameters": {
+    "max_velocity": 5.0,
+    "max_acceleration": 2.0,
+    "max_altitude": 50.0,
+    "min_altitude": 0.5,
+    "safety_margin": 2.0,
+    "target_tolerance": 0.5,
+    "landing_speed": 0.5
+  },
+  
+  "battery_management": {
+    "low_battery_threshold": 30.0,
+    "critical_battery_threshold": 15.0,
+    "auto_land_on_low_battery": true
+  },
+  
+  "home_position": {
+    "latitude": 0.0,
+    "longitude": 0.0,
+    "altitude": 0.0
+  },
+  
+  "camera_settings": {
+    "camera_index": 0,
+    "frame_width": 640,
+    "frame_height": 480,
+    "camera_fps": 30,
+    "camera_calibration_file": "config/camera_calibration.json",
+    "auto_exposure": true,
+    "brightness": 0,
+    "contrast": 0
+  },
+  
+  "vision_system": {
+    "use_stereo_vision": false,
+    "stereo_baseline": 0.12,
+    "use_depth_camera": false,
+    "depth_camera_index": 1,
+    "enable_night_vision": false,
+    "image_enhancement": true
+  },
+  
+  "object_detection": {
+    "yolo_model_path": "models/yolov8n.pt",
+    "detection_confidence_threshold": 0.5,
+    "nms_threshold": 0.4,
+    "max_detections": 100,
+    "enable_tracking": true,
+    "tracking_max_age": 30,
+    "custom_classes": []
+  },
+  
+  "obstacle_detection": {
+    "min_obstacle_size": 0.1,
+    "max_detection_distance": 30.0,
+    "obstacle_confidence_threshold": 0.6,
+    "min_obstacle_distance": 1.0,
+    "use_depth_analysis": true,
+    "use_motion_detection": true,
+    "use_ml_detection": true,
+    "min_contour_area": 100.0,
+    "max_contour_area": 10000.0,
+    "min_dynamic_area": 50.0,
+    "max_tracking_age": 5.0,
+    "max_tracking_distance": 2.0,
+    "duplicate_threshold": 1.0,
+    "threat_level_weights": {
+      "distance": 0.4,
+      "size": 0.2,
+      "velocity": 0.2,
+      "type": 0.2
+    }
+  },
+  
+  "path_planning": {
+    "planner_type": "potential_field",
+    "grid_resolution": 0.5,
+    "grid_size": 100,
+    "planning_horizon": 10.0,
+    "replan_threshold": 1.0,
+    "min_replan_interval": 0.5,
+    "emergency_stop_distance": 0.5,
+    "collision_avoidance_distance": 2.0,
+    "path_smoothing": true,
+    "smoothing_factor": 0.1,
+    "waypoint_tolerance": 0.5,
+    "max_path_length": 1000,
+    "planning_timeout": 5.0,
+    "algorithm_specific": {
+      "a_star": {
+        "heuristic_weight": 1.0,
+        "tie_breaker": 0.001
+      },
+      "rrt": {
+        "max_iterations": 1000,
+        "step_size": 1.0,
+        "goal_bias": 0.1,
+        "max_extend_distance": 5.0
+      },
+      "potential_field": {
+        "attractive_gain": 1.0,
+        "repulsive_gain": 2.0,
+        "obstacle_influence_distance": 5.0,
+        "goal_tolerance": 0.5
+      },
+      "dynamic_window": {
+        "velocity_resolution": 0.1,
+        "heading_resolution": 0.1,
+        "prediction_time": 2.0,
+        "velocity_samples": 20
+      }
+    }
+  },
+  
+  "nlp_settings": {
+    "enable_voice_commands": true,
+    "use_wake_word": false,
+    "wake_word": "drone",
+    "language": "en-US",
+    "speech_timeout": 5.0,
+    "confidence_threshold": 0.7,
+    "enable_tts_feedback": true,
+    "tts_voice": "default",
+    "tts_rate": 150,
+    "tts_volume": 0.8,
+    "microphone_index": null,
+    "noise_reduction": true,
+    "custom_commands": {
+      "emergency_words": ["emergency", "stop", "abort", "help", "danger"],
+      "confirmation_words": ["yes", "confirm", "proceed", "continue"],
+      "cancellation_words": ["no", "cancel", "abort", "stop"]
+    }
+  },
+  
+  "safety_systems": {
+    "enable_geofencing": true,
+    "geofence_radius": 100.0,
+    "geofence_max_altitude": 50.0,
+    "enable_fail_safe": true,
+    "fail_safe_action": "land",
+    "communication_timeout": 10.0,
+    "low_signal_threshold": -80,
+    "enable_obstacle_avoidance": true,
+    "emergency_descent_rate": 2.0,
+    "auto_disarm_timeout": 30.0,
+    "pre_flight_checks": {
+      "battery_check": true,
+      "gps_check": true,
+      "compass_check": true,
+      "camera_check": true,
+      "communication_check": true
+    }
+  },
+  
+  "logging": {
+    "log_level": "INFO",
+    "log_directory": "logs",
+    "log_to_file": true,
+    "log_to_console": true,
+    "max_log_size": 100,
+    "log_rotation": true,
+    "enable_flight_recording": true,
+    "recording_frequency": 10,
+    "telemetry_logging": true,
+    "vision_logging": false,
+    "debug_mode": false
+  },
+  
+  "performance": {
+    "max_cpu_usage": 80.0,
+    "max_memory_usage": 4096,
+    "frame_skip_threshold": 5,
+    "processing_threads": 4,
+    "gpu_acceleration": true,
+    "optimization_level": "balanced",
+    "enable_profiling": false
+  },
+  
+  "communication": {
+    "telemetry_rate": 10,
+    "heartbeat_rate": 1,
+    "status_broadcast_rate": 2,
+    "enable_ground_station": false,
+    "ground_station_port": 8080,
+    "enable_web_interface": false,
+    "web_interface_port": 8081,
+    "api_key": null,
+    "enable_remote_control": false
+  },
+  
+  "advanced_features": {
+    "enable_ai_mission_planning": false,
+    "enable_swarm_coordination": false,
+    "enable_learning_mode": false,
+    "enable_predictive_maintenance": false,
+    "enable_weather_awareness": false,
+    "enable_traffic_avoidance": false
+  },
+  
+  "simulation": {
+    "physics_enabled": true,
+    "wind_simulation": false,
+    "wind_speed": 0.0,
+    "wind_direction": 0.0,
+    "turbulence_level": 0.0,
+    "realistic_sensors": true,
+    "sensor_noise": 0.01,
+    "latency_simulation": false,
+    "network_latency": 0.1
+  },
+  
+  "debugging": {
+    "enable_debug_visualization": false,
+    "show_detection_boxes": false,
+    "show_flight_path": false,
+    "show_obstacles": false,
+    "show_planning_grid": false,
+    "verbose_logging": false,
+    "save_debug_frames": false,
+    "debug_frame_interval": 30
+  }
+}
